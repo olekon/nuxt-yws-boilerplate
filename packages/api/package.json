@@ -2,5 +2,8 @@
     "name": "@nuxt-yws/api",
     "version": "0.1.0",
     "main": "index.js",
-    "license": "MIT"
+    "license": "MIT",
+    "peerDependencies": {
+        "axios": "^0.19.2"
+    }
 }

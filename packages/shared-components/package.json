@@ -1,0 +1,9 @@
+{
+    "name": "@nuxt-yws/shared-components",
+    "version": "0.1.0",
+    "main": "index.js",
+    "license": "MIT",
+    "peerDependencies": {
+        "bootstrap-vue": "^2.7.0"
+    }
+}

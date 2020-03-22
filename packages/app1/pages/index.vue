@@ -4,41 +4,38 @@
             <Logo />
             <h1 class="title">
                 Title
-            </h1>
-           
+            </h1>           
             <h2
                 class="subtitle"
             >
                 {{ body }}
             </h2>
             <div class="links">
-                <a
-                    href="https://nuxtjs.org/"
-                    target="_blank"
-                    class="button--green"
-                >Documentation</a>
-                <a
-                    href="https://github.com/nuxt/nuxt.js"
-                    target="_blank"
-                    class="button--grey"
-                >GitHub</a>
+                <MyInput @input="onMyInput" />
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import Logo from "~/components/Logo.vue";
+import Logo from '~/components/Logo.vue';
+import {MyInput} from '@nuxt-yws/shared-components';
 
 export default {
     components: {
-        Logo
+        Logo,
+        MyInput
     },
     asyncData(context) {
         return context.app.$api.getSome()
             .then(response => {
                 return {body: response.data.body};  
             });
+    },
+    methods: {
+        onMyInput(event) {
+            console.log(event);
+        }
     }
 };
 </script>

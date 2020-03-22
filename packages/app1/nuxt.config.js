@@ -61,14 +61,17 @@ export default {
 ** Build configuration
 */
     build: {
-        transpile: ['@nuxt-yws/api'],
+        transpile: [
+            '@nuxt-yws/api',
+            '@nuxt-yws/shared-components'
+        ],
         /*
     ** You can extend webpack config here
     */
         extend(config, ctx) {
             if (ctx.isDev) {
-                config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
+                config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map';
             }
         }
     }
-}
+};

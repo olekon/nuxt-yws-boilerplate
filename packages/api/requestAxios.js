@@ -9,7 +9,7 @@ class RequestAxios {
             method,
             params: queryParams,
             data: body
-        })
+        });
     }
 }
 

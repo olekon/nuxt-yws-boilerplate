@@ -10,7 +10,7 @@ class Api {
     }
 
     postSome() {
-        return this.request.send('/posts/', { title: 'foo', body: 'BODY!', userId: 1 }, 'post')
+        return this.request.send('/posts/', { title: 'foo', body: 'BODY!', userId: 1 }, 'post');
     }
 }
 

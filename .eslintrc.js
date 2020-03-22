@@ -11,6 +11,7 @@ module.exports = {
     ],
     rules: {
         indent: ["warn", 4],
+        semi: ["error", "always"],
         "vue/html-indent": ["warn", 4],
         "vue/component-name-in-template-casing": ["error", "PascalCase"],
         "no-console": process.env.NODE_ENV === "production" ? "error" : "off",

@@ -1,6 +1,8 @@
+const resolve = require('path').resolve;
 
 export default {
     mode: 'universal',
+    modulesDir: resolve(__dirname, '../../node_modules/'),
     /*
 ** Headers of the page
 */
@@ -28,6 +30,7 @@ export default {
 ** Plugins to load before mounting the App
 */
     plugins: [
+        '~/plugins/api.js'
     ],
     /*
 ** Nuxt.js dev-modules
@@ -52,15 +55,20 @@ export default {
 ** See https://axios.nuxtjs.org/options
 */
     axios: {
+        baseURL: 'https://jsonplaceholder.typicode.com'
     },
     /*
 ** Build configuration
 */
     build: {
+        transpile: ['@nuxt-yws/api'],
         /*
     ** You can extend webpack config here
     */
-        extend() {
+        extend(config, ctx) {
+            if (ctx.isDev) {
+                config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
+            }
         }
     }
 }

@@ -3,10 +3,13 @@
         <div>
             <Logo />
             <h1 class="title">
-                nuxt1
+                Title
             </h1>
-            <h2 class="subtitle">
-                My majestic Nuxt.js project
+           
+            <h2
+                class="subtitle"
+            >
+                {{ body }}
             </h2>
             <div class="links">
                 <a
@@ -30,6 +33,12 @@ import Logo from "~/components/Logo.vue";
 export default {
     components: {
         Logo
+    },
+    asyncData(context) {
+        return context.app.$api.getSome()
+            .then(response => {
+                return {body: response.data.body};  
+            });
     }
 };
 </script>

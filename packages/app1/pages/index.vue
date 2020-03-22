@@ -7,35 +7,19 @@
             </h1>           
             <h2
                 class="subtitle"
-            >
-                {{ body }}
-            </h2>
-            <div class="links">
-                <MyInput @input="onMyInput" />
-            </div>
+            />            
         </div>
     </div>
 </template>
 
 <script>
 import Logo from '~/components/Logo.vue';
-import {MyInput} from '@nuxt-yws/shared-components';
 
 export default {
     components: {
         Logo,
-        MyInput
-    },
-    asyncData(context) {
-        return context.app.$api.getSome()
-            .then(response => {
-                return {body: response.data.body};  
-            });
     },
     methods: {
-        onMyInput(event) {
-            console.log(event);
-        }
     }
 };
 </script>

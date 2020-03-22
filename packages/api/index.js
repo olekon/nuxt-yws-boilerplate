@@ -5,13 +5,15 @@ class Api {
         this.request = new RequestAxios(axios);
     }
 
-    getSome() {
-        return this.request.send('/posts/1/', {}, 'get');
-    }
-
-    postSome() {
-        return this.request.send('/posts/', { title: 'foo', body: 'BODY!', userId: 1 }, 'post');
-    }
+    // Example:
+    //
+    // getSome() {
+    //     return this.request.send('/posts/1/', {}, 'get');
+    // }
+    //
+    // postSome() {
+    //     return this.request.send('/posts/', { title: 'foo', body: 'BODY!', userId: 1 }, 'post');
+    // }
 }
 
 export default Api;

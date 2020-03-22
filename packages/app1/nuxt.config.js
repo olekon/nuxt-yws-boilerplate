@@ -1,4 +1,5 @@
 const resolve = require('path').resolve;
+require('dotenv').config();
 
 export default {
     mode: 'universal',

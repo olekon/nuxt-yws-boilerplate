@@ -49,7 +49,8 @@ export default {
         // Doc: https://axios.nuxtjs.org/usage
         '@nuxtjs/axios',
         // Doc: https://github.com/nuxt-community/dotenv-module
-        '@nuxtjs/dotenv'
+        '@nuxtjs/dotenv',
+        '@nuxtjs/auth'
     ],
     /*
 ** Axios module configuration
@@ -57,6 +58,19 @@ export default {
 */
     axios: {
     },
+
+    auth: {
+        strategies: {
+            // local: {
+            //     endpoints: {
+            //         login: { url: 'login', method: 'post', propertyName: 'token' },
+            //         user: { url: 'user', method: 'get', propertyName: 'data' },
+            //         logout: { url: 'logout', method: 'post' },
+            //     }
+            // }
+        }
+    },
+
     /*
 ** Build configuration
 */

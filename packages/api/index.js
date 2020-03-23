@@ -1,14 +1,15 @@
 import RequestAxios from './requestAxios';
 
 class Api {
-    constructor(axios) {
-        this.request = new RequestAxios(axios);
+    constructor(axios, errorFlags = {}) {
+        this.request = new RequestAxios(axios, errorFlags);
     }
 
-    // Example:
+    // Example
     //
     // register(email, password) {
     //     return this.request.send('/register', 'post', { email, password });
     // }
 }
+
 export default Api;

@@ -22,11 +22,11 @@ class RequestAxios {
     /**
      * Creates RequestAxios instance
      * @param {Object} axios axios instance 
-     * @param {Object} [errorFlags={}] string-string collection of flags that should be returned instead of numeric error codes.
+     * @param {Object} [errorFlags={}] number-string collection of flags that should be returned instead of numeric error codes.
      */
     constructor(axios, errorFlags = {}) {
         this.axios = axios;
-        this.errorFlags = errorFlags;
+        this.errorFlags = { ...errorFlags };
     }
 
     /**

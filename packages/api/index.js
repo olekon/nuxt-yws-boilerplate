@@ -7,13 +7,8 @@ class Api {
 
     // Example:
     //
-    // getSome() {
-    //     return this.request.send('/posts/1/', {}, 'get');
-    // }
-    //
-    // postSome() {
-    //     return this.request.send('/posts/', { title: 'foo', body: 'BODY!', userId: 1 }, 'post');
+    // register(email, password) {
+    //     return this.request.send('/register', 'post', { email, password });
     // }
 }
-
 export default Api;

@@ -3,7 +3,7 @@
         <div>
             <Logo />
             <h1 class="title">
-                Title
+                {{ $t("title") }}
             </h1>           
             <h2
                 class="subtitle"

@@ -50,7 +50,27 @@ export default {
         '@nuxtjs/axios',
         // Doc: https://github.com/nuxt-community/dotenv-module
         '@nuxtjs/dotenv',
-        '@nuxtjs/auth'
+        '@nuxtjs/auth',
+        ['nuxt-i18n', {
+            locales: [
+                {
+                    name: 'Русский',
+                    code: 'ru',
+                    iso: 'ru-RU',
+                    file: 'ru-RU.js'
+                },
+                {
+                    name: 'English',
+                    code: 'en',
+                    iso: 'en-US',
+                    file: 'en-US.js'
+                },
+            ],
+            lazy: true,
+            langDir: 'lang/',
+            strategy: 'no_prefix',
+            defaultLocale: 'en'
+        }]
     ],
     /*
 ** Axios module configuration

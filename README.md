@@ -8,7 +8,12 @@ A boilerplate to quickly set up Yarn workspaces monorepo with:
 
 ## packages/app1 
 ### Nuxt.js application 
-Universal mode, Bootstrap Vue, @nuxtjs/axios, ready for VS Code debugging
+* Universal mode 
+* Bootstrap Vue 
+* @nuxtjs/axios 
+* @nuxtjs/auth
+* nuxt-i18n
+* Ready for VS Code debugging
 
 ## packages/api
 Wrapper for Nuxt.js' axios instance. Plugin in `packages/app1/plugins/api.js` injects wrapper as $api into Vue instances and context. 

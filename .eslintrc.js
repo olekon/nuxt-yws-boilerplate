@@ -10,6 +10,7 @@ module.exports = {
         "eslint:recommended",
     ],
     rules: {
+        quotes: ["warn", "single"],
         indent: ["warn", 4],
         semi: ["error", "always"],
         "vue/html-indent": ["warn", 4],

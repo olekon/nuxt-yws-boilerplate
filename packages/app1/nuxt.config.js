@@ -1,7 +1,19 @@
+const fs = require('fs');
 const resolve = require('path').resolve;
+
+
 require('dotenv').config();
 
+const isDevelopment = process.env.NODE_ENV === 'development';
+
 export default {
+    server: {
+        https: isDevelopment && process.env.HTTPS === '1' ? {
+            key: fs.readFileSync(resolve(__dirname, process.env.CERT_KEY_FILE)),
+            cert: fs.readFileSync(resolve(__dirname, process.env.CERT_CRT_FILE))
+        } : false
+    },
+
     mode: 'universal',
     modulesDir: resolve(__dirname, '../../node_modules/'),
     /*
@@ -26,13 +38,20 @@ export default {
 ** Global CSS
 */
     css: [
+        '~/assets/styles/app.scss'
     ],
+
     /*
 ** Plugins to load before mounting the App
 */
     plugins: [
-        '~/plugins/api.js'
+        '~/plugins/axios.js',
+        '~/plugins/eventHub.js',
+        '~/plugins/api.js',
+        '~/plugins/geo.client.js',
     ],
+
+
     /*
 ** Nuxt.js dev-modules
 */
@@ -77,32 +96,81 @@ export default {
 ** See https://axios.nuxtjs.org/options
 */
     axios: {
+        credentials: true
+    },
+    // uncomment for auth config
+    // auth: {
+    //     redirect: {
+    //         login: '/signup',            
+    //         callback:'/login',
+    //         home: '/'            
+    //     },
+    //     strategies: {
+    //         local: {
+    //             endpoints: {
+    //                 login: { url: '/user/login', method: 'post' },
+    //                 user: { url: '/user/', method: 'get', propertyName: 'user' },
+    //                 logout: { url: '/user/logout', method: 'post' },
+    //             },
+    //             tokenRequired: false,
+    //             tokenType: false
+    //         },
+    //         facebook: {
+    //             client_id: process.env.FACEBOOK_APP_ID,
+    //             userinfo_endpoint: false,
+    //             scope: ['public_profile', 'email'],
+    //         },
+    //         google: {
+    //             client_id: process.env.GOOGLE_APP_ID,
+    //             userinfo_endpoint: false,
+    //             scope: ['openid', 'profile', 'email'],
+    //         },
+    //         instagram: {
+    //             _scheme: 'oauth2',
+    //             authorization_endpoint: 'https://api.instagram.com/oauth/authorize',                
+    //             userinfo_endpoint: process.env.API_URL+'/user/',
+    //             scope: ['user_profile', 'user_media'],                
+    //             response_type: 'code',
+    //             client_id: process.env.INSTAGRAM_APP_ID,
+    //         }
+    //     },
+    //     plugins: [
+    //         '~/plugins/auth.js',
+    //     ]
+    // },
+
+    router: {
+        // Uncomment if you need array query params in bracketed form
+        // parseQuery: (query) => {
+        //     const qs = require('qs');
+        //     return qs.parse(query);
+        // },
+        // stringifyQuery: (query) => {
+        //     const qs = require('qs');
+        //     return '?' + qs.stringify(query, { arrayFormat: 'brackets', skipNulls: true });
+        // }
     },
 
-    auth: {
-        strategies: {
-            // local: {
-            //     endpoints: {
-            //         login: { url: 'login', method: 'post', propertyName: 'token' },
-            //         user: { url: 'user', method: 'get', propertyName: 'data' },
-            //         logout: { url: 'logout', method: 'post' },
-            //     }
-            // }
-        }
+    bootstrapVue: {
+        // Add the desired icon components to the `components` array
+        icons: true
     },
 
     /*
 ** Build configuration
 */
-    build: {
+    build: {        
         transpile: [
             '@nuxt-yws/api',
-            '@nuxt-yws/shared-components'
+            '@nuxt-yws/shared-components'            
         ],
         /*
     ** You can extend webpack config here
     */
         extend(config, ctx) {
+            if (ctx && ctx.isClient) {
+                config.optimization.splitChunks.maxSize = 204800;
+            }
             if (ctx.isDev) {
                 config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map';
             }

@@ -1,19 +1,9 @@
-// Usage in component
+export const state = () => ({
 
-// import { mapGetters } from 'vuex'
-//
-// ...
-//
-// computed: {
-//     ...mapGetters(['isAuthenticated', 'loggedInUser'])
-//   }
+});
 
-export const getters = {
-    isAuthenticated(state) {
-        return state.auth.loggedIn;
-    },
-
-    loggedInUser(state) {
-        return state.auth.user;
+export const actions = {
+    nuxtServerInit({ dispatch }) {
+        return dispatch('lookups/load');
     }
 };

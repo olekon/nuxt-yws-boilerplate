@@ -19,7 +19,7 @@
         "@nuxt-yws/shared-components": "0.1.0",
         "bootstrap": "^4.1.3",
         "bootstrap-vue": "^2.15.0",
-        "moment": "^2.24.0",
+        "moment": "^2.29.2",
         "nuxt": "^2.0.0",
         "nuxt-i18n": "^6.6.1",
         "qs": "^6.9.4"

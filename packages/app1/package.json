@@ -22,7 +22,7 @@
         "moment": "^2.24.0",
         "nuxt": "^2.0.0",
         "nuxt-i18n": "^6.6.1",
-        "qs": "^6.9.4"
+        "qs": "^6.9.7"
     },
     "devDependencies": {
         "@nuxtjs/eslint-config": "^2.0.0",
